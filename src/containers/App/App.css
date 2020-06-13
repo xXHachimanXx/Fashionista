@@ -1,0 +1,61 @@
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap);
+
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+}
+
+ul {
+	list-style: none;
+	display: flex;
+	align-items: center;
+}
+
+a,
+li {
+	text-decoration: none;
+}
+
+
+body {
+	background-color: #f9f9f9;
+	font-family: "Noto Sans SC",sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	text-size-adjust: 100%;
+	text-decoration: none;
+}
+
+button {
+	border: none;
+	box-shadow: none;
+	outline: none;
+	background-color: transparent;
+}
+
+p {
+	text-rendering: optimizeLegibility;
+}
+
+.app {
+	min-height: 100vh;
+    position: relative;
+}
+
+.app__container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 auto;
+	padding: 0 1.6rem;
+	/*padding: 15px 30px;	*/
+	width: 100%;
+}
+
+@media screen and (min-width: 1279px) {
+	.container {
+		width: 1279px;
+	}
+}
