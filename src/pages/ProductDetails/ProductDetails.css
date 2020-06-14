@@ -40,6 +40,13 @@
 		width: 50%;
 	}
 
+	.product__details__image .badge {
+		right: 0;
+		top: 0;
+		left: auto;
+		bottom: auto;
+		margin: 0;
+	}
 }
 
 
@@ -47,6 +54,7 @@
 	overflow: hidden;
 	justify-content: center;
 	align-items: center;
+	position: relative;
 	width: 50%;
 }
 
@@ -102,8 +110,8 @@
 .product__details__content .product__details__price--from {
 	margin-right: 1rem;
 	font-size: 1.4rem;
-    color: #a7a7a7;
-    text-decoration: line-through;
+	color: #a7a7a7;
+	text-decoration: line-through;
 }
 
 .product__details__content .product__details__price--installments {
@@ -215,12 +223,17 @@
 
 .product__details__sizes .product__details__title {
 	color: #a7a7a7;
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
+	font-size: 1.4rem;
+	margin-bottom: 1rem;
 }
 
 .product__details__sizes .product__details__warning {
 	color: #cf3838;
 	font-size: 1.3rem;
 	margin-bottom: 2rem;
+}
+
+.product__details__image .badge {
+	font-size: 1.5rem;
+    position: absolute;
 }

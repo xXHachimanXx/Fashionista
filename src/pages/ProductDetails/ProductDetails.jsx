@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { closeDrawerAction } from "../../store/actions/drawerActions";
 import { getProducts } from "../../store/actions/productsActions";
@@ -8,6 +10,8 @@ import { addProductToCart, updateCartProductQuantity } from "../../store/actions
 import { setProductToBuy, setSizeProductToBuy } from "../../store/actions/productActions";
 
 import { DEFAULT_PRODUCT_IMAGE } from "../../utils/constants";
+
+import Badge from '../../components/Badge/Badge';
 
 import './ProductDetails.css';
 
@@ -27,6 +31,7 @@ const ProductDetails = () => {
   const [sizeSelected, setSizeSelected] = useState(true);
 
   const productSize = product === null ? 'NOT' : (product.size || null);
+
 
   useEffect(() => {
 
@@ -52,6 +57,19 @@ const ProductDetails = () => {
     }
     init();
   }, []);
+
+  // Toast de notificação de compra
+  const notify = () => toast("Produto adicionado ao carrinho :)", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      type: "dark"
+    }
+  );
 
   async function getProductFromLocalStorage() {
     var productJSON = localStorage.getItem('@fashionista/product');
@@ -80,7 +98,6 @@ const ProductDetails = () => {
       return;
     }
 
-    setSizeSelected(true);
     const pAux = cart.find(p =>
       p.product_info.code_color === productDetails.product_info.code_color &&
       p.product_info.size === productDetails.product_info.size
@@ -89,6 +106,8 @@ const ProductDetails = () => {
       await dispatch(updateCartProductQuantity(pAux.product_info.code_color, pAux.product_info.size, 1));
     else
       await dispatch(addProductToCart(productDetails));
+
+    notify();
   }
 
 
@@ -96,6 +115,8 @@ const ProductDetails = () => {
     <div className="app__container">
       <div className="product__details">
         <figure className="product__details__image">
+
+          {product.discount_percentage && <Badge discount={product.discount_percentage} />}
           <img
             src={product.image || DEFAULT_PRODUCT_IMAGE}
             alt="Produto VESTIDO TRANSPASSE BOW"
@@ -108,7 +129,7 @@ const ProductDetails = () => {
 
           <div className="product__details__price">
             {
-              product.discount_percentage && 
+              product.discount_percentage &&
               <span className="product__details__price product__details__price--from">{product.regular_price}</span>
             }
             <span className="product__details__price product__details__price--to">{product.actual_price}</span>
@@ -127,7 +148,7 @@ const ProductDetails = () => {
                 product.sizes.map((s, index) =>
                   <button
                     key={index}
-                    onClick={() => { dispatch(setSizeProductToBuy(s.size)); }}
+                    onClick={() => { dispatch(setSizeProductToBuy(s.size)); setSizeSelected(true); }}
                     className={`${productSize === s.size ? 'onClick' : 'sizeButton'}`}
                   >
                     {s.size}
@@ -143,6 +164,10 @@ const ProductDetails = () => {
             </button>
           </div>
         </div>
+      </div>
+      <div>
+
+        <ToastContainer />
       </div>
     </div>
   )
