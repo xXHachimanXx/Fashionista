@@ -59,7 +59,7 @@ const ProductDetails = () => {
   }, []);
 
   // Toast de notificação de compra
-  const notify = () => toast("Produto adicionado ao carrinho :)", {
+  const notifyProductAdded = () => toast("Produto adicionado ao carrinho :)", {
       position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -70,6 +70,18 @@ const ProductDetails = () => {
       type: "dark"
     }
   );
+
+  const notifySizeNotSelected = () => {
+    toast.warn('Ecolha um tamanho para o produto!', {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+  }
 
   async function getProductFromLocalStorage() {
     var productJSON = localStorage.getItem('@fashionista/product');
@@ -95,6 +107,7 @@ const ProductDetails = () => {
 
     if (productSize === null || productSize === 'NOT') {
       setSizeSelected(false);
+      notifySizeNotSelected();
       return;
     }
 
@@ -107,7 +120,7 @@ const ProductDetails = () => {
     else
       await dispatch(addProductToCart(productDetails));
 
-    notify();
+    notifyProductAdded();
   }
 
 
