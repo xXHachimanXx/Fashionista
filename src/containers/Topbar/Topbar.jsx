@@ -29,6 +29,10 @@ const Topbar = () => {
         </Link>
 
         <div className="topbar__group">
+          <Link to="/" className="topbar__icon--home">
+            <i class="fas fa-home" />
+          </Link>
+
           <button className="topbar__icon--search" onClick={() => handleOpenSearchDrawer()}>
             <i className="fa fa-search" aria-hidden="true"></i>
           </button>

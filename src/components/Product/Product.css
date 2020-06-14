@@ -25,10 +25,7 @@
     display: inline-block;
     font-size: 1.3rem;
     padding: .2rem;
-    background-color: #cf1111;
-    color: #fff;
     padding: 5px;
-    border-radius: 10px;
 }
 
 .product__name {
