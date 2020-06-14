@@ -34,15 +34,13 @@
 .topbar__group i {
   color: black;
   font-size: 23px;
-  margin-right: 10px;
-  margin: 10px;
+  margin: 8px;
   height: 100%;
   border-radius: 100%;
 }
 
 .topbar .topbar__icon--cart,
 .topbar .topbar__icon--search {
-  cursor: pointer;
   margin-right: 1rem;
   background: transparent;
   border-radius: 100%;
@@ -53,6 +51,10 @@
   outline: none;
   padding: 0;
   position: relative;
+}
+
+.topbar .topbar__icon--search {
+  margin-right: 1.5rem;
 }
 
 .topbar__icon--cart i sup {
@@ -69,4 +71,8 @@
   text-align: center;
   font-size: 1.2rem;
   font-weight: 700;
+}
+
+.topbar__icon--home {
+  margin-right: 1.5rem;
 }

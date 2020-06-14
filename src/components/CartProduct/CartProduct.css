@@ -17,7 +17,7 @@
 .cart__product__remove {
     font-size: 1.2rem;
     color: #cf3838;
-    font-weight: 200;
+    font-weight: 300;
     padding: 0.5rem;
 }
 
@@ -35,6 +35,7 @@
     overflow: hidden;
     width: 25%;
     position: relative;
+    box-shadow: 0 0.2rem 2rem 0 rgba(0, 0, 0, .1);
 }
 
 .cart__product__list .cart__product__image {
