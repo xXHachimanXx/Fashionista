@@ -80,6 +80,7 @@ const ProductDetails = () => {
       return;
     }
 
+    setSizeSelected(true);
     const pAux = cart.find(p =>
       p.product_info.code_color === productDetails.product_info.code_color &&
       p.product_info.size === productDetails.product_info.size
